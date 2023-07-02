@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      $(document).ready(function () {
+        socket.on("connect", function () {
+          console.log("Connected to server");
+        });
+
+        socket.on("disconnect", function () {
+          console.log("Disconnected from server");
+        });
+
+        socket.on("updateCounter", function (counter) {
+          $("#counter").text(counter);
+        });
+
+        $("#incrementBtn").click(function () {
+          socket.emit("incrementCounter");
+        });
+      });
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Remote Source</h1>
+    <ul class="navigation">
+      <li><a href="/index.html">About Me</a></li>
+      <li><a href="/html/interactive_map.html">Interactive map</a></li>
+      <li><a href="/html/image_gallery.html">Image gallery</a></li>
+      <li><a href="/html/cavans_css-animation.html">Canvas & CSS</a></li>
+      <li><a href="/html/local_storage.html">Local Storage</a></li>
+      <li class="selected-link">Remote Source</li>
+      <li><a href="/html/chat.html">Chat</a></li>
+      <li><a href="/html/contact_page.html">Contact Page</a></li>
+    </ul>
+
+    <h2>What We Do</h2>
+
+    <div class="description">
+      <p>
+        This code represents a web page with a remote source feature. Overall,
+        this web page demonstrates a basic interaction with a remote source
+        using Socket.IO, including connecting to the server, updating a counter
+        value, and emitting events.
+      </p>
+      <li>
+        <a href="/html/counter.html" target="_blank">Link to Remote Source</a>
+      </li>
+    </div>
+
+    <h2>Counter: <span id="counter">0</span></h2>
+    <button id="incrementBtn">Increase</button>
+    <footer>
+      <p class="footer">Mykhailo Serhiienko 2023</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Interactive Map</h1>
+    <ul class="navigation">
+      <li><a href="/index.html">About Me</a></li>
+      <li class="selected-link">Interactive map</li>
+      <li><a href="/html/image_gallery.html">Image gallery</a></li>
+      <li><a href="/html/cavans_css-animation.html">Canvas & CSS</a></li>
+      <li><a href="/html/local_storage.html">Local Storage</a></li>
+      <li><a href="/html/remote_source.html">Remote Source</a></li>
+      <li><a href="/html/chat.html">Chat</a></li>
+      <li><a href="/html/contact_page.html">Contact Page</a></li>
+    </ul>
+
+    <h2>Implementing HTML Geolocation</h2>
+
+    <div class="page-container">
+      <h1>Leaflet Map</h1>
+
+      <div id="myMap"></div>
+
+      <button id="find-me" onclick="getLocation()">Find Me</button>
+      <p id="demo"></p>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script>
+      const map = L.map("myMap");
+      map.setView([51.505, -0.09], 13);
+
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      var popup = L.popup();
+
+      function onMapClick(e) {
+        popup
+          .setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng.toString())
+          .openOn(map);
+      }
+
+      map.on("click", onMapClick);
+
+      let x = document.getElementById("demo");
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+        // Remove existing marker if present
+        map.eachLayer(function (layer) {
+          if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+          }
+        });
+
+        // Add a marker at the current location
+        L.marker([latitude, longitude]).addTo(map);
+        map.setView([latitude, longitude], 13);
+      }
+    </script>
+    <footer>
+      <p class="footer">Mykhailo Serhiienko 2023</p>
+    </footer>
+  </body>
+</html>

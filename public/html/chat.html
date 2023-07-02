@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Chat</h1>
+    <ul class="navigation">
+      <li><a href="/index.html">About Me</a></li>
+      <li><a href="/html/interactive_map.html">Interactive map</a></li>
+      <li><a href="/html/image_gallery.html">Image gallery</a></li>
+      <li><a href="/html/cavans_css-animation.html">Canvas & CSS</a></li>
+      <li><a href="/html/local_storage.html">Local Storage</a></li>
+      <li><a href="/html/remote_source.html">Remote Source</a></li>
+      <li class="selected-link">Chat</li>
+      <li><a href="/html/contact_page.html">Contact Page</a></li>
+    </ul>
+
+    <h2>What We Do</h2>
+    <h4>
+      This chat represents a simple implementation of a messaging system using
+      web sockets. Here's a brief presentation of this chat:
+    </h4>
+    <div class="description">
+      <h5>Appearance:</h5>
+      <p>
+        The chat is displayed as a chat window, which includes a message list
+        and an input field for sending new messages.
+      </p>
+    </div>
+
+    <div class="description">
+      <h5>Interactivity:</h5>
+      <p>
+        Users can enter text messages in the input field and send them by
+        clicking the "Send Message" button. When a message is sent, it is
+        displayed in the chat window and sent to the server, including the
+        message text (Message) and the sender's identifier (sender).
+      </p>
+    </div>
+
+    <div class="description">
+      <h5>Web Sockets:</h5>
+      <p>
+        The chat utilizes the Socket.IO library for message exchange, providing
+        support for web sockets on both the server and client sides.
+      </p>
+    </div>
+    <h2>Chat Example:</h2>
+
+    <div class="chat_exmpl">
+      <div class="chat_css">
+        <ul id="chat-ul"></ul>
+      </div>
+      <div class="text-btn">
+        <input required id="chat" type="text" name="chat" />
+        <button onclick="buttonClicked()" id="chat-button">Push</button>
+      </div>
+    </div>
+    <script src="/JS/chat.js"></script>
+    <footer>
+      <p class="footer">Mykhailo Serhiienko 2023</p>
+    </footer>
+  </body>
+</html>

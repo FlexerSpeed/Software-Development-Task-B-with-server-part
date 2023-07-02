@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Contact Page</h1>
+    <ul class="navigation">
+      <li><a href="/index.html">About Me</a></li>
+      <li><a href="/html/interactive_map.html">Interactive map</a></li>
+      <li><a href="/html/image_gallery.html">Image gallery</a></li>
+      <li><a href="/html/cavans_css-animation.html">Canvas & CSS</a></li>
+      <li><a href="/html/local_storage.html">Local Storage</a></li>
+      <li><a href="/html/remote_source.html">Remote Source</a></li>
+      <li><a href="/html/chat.html">Chat</a></li>
+      <li class="selected-link">Contact Page</li>
+    </ul>
+
+    <h2>Contact Us</h2>
+
+    <div class="description">
+      <p>
+        This code provides an example JavaScript script that enables basic form
+        validation. It utilizes the document.querySelector method to retrieve
+        references to different form elements and includes functions for
+        validating the "Full Name" and "Email Address" fields. When data is
+        entered into the form fields, it undergoes validation, and corresponding
+        error messages are displayed. Additionally, upon form submission, a
+        final validation check is performed, and if there are any errors
+        present, the form is prevented from being submitted. This code can be
+        expanded and customized to handle and validate other form fields or
+        incorporate additional functionality.
+      </p>
+    </div>
+    <div class="page-container2">
+      <h2>Form Validation</h2>
+
+      <form id="myForm" action="" novalidate>
+        <div class="form-control">
+          <label for="fullName">Your full name</label>
+          <input required id="fullName" type="text" name="full_name" />
+          <div class="field-error"></div>
+        </div>
+
+        <div class="form-control">
+          <label for="emailAddress">Your email</label>
+          <input required id="emailAddress" type="email" name="email_address" />
+          <div class="field-error"></div>
+        </div>
+
+        <div class="story_control">
+          <label for="story">Massage</label>
+          <textarea id="story" name="story"></textarea>
+          <div id="storyOutput" class="output"></div>
+        </div>
+
+        <input class="buttonGO" type="submit" value="Go!" />
+      </form>
+    </div>
+
+    <script src="/JS/form-validation.js"></script>
+    <footer>
+      <p class="footer">Mykhailo Serhiienko 2023</p>
+    </footer>
+  </body>
+</html>

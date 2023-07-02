@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>local Storage</h1>
+    <ul class="navigation">
+      <li><a href="/index.html">About Me</a></li>
+      <li><a href="/html/interactive_map.html">Interactive map</a></li>
+      <li><a href="/html/image_gallery.html">Image gallery</a></li>
+      <li><a href="/html/cavans_css-animation.html">Canvas & CSS</a></li>
+      <li class="selected-link">Local Storage</li>
+      <li><a href="/html/remote_source.html">Remote Source</a></li>
+      <li><a href="/html/chat.html">Chat</a></li>
+      <li><a href="/html/contact_page.html">Contact Page</a></li>
+    </ul>
+
+    <h2>What We Do</h2>
+    <div class="description">
+      <h5>Local Storage:</h5>
+      <p>
+        Local Storage is a web browser mechanism that allows web applications to
+        store data on the user's computer. It is a simple key-value storage that
+        is available for use within a specific domain. A basic example is
+        provided on this page.
+      </p>
+    </div>
+    <div class="description">
+      <h5>Web Worker:</h5>
+      <p>
+        The main essence of a Web Worker is that it provides the ability to
+        perform background tasks in a separate thread, distinct from the main
+        JavaScript execution thread of a web page. A simple example in the form
+        of a timer counter running on a Web Worker is located at the bottom of
+        the page.
+      </p>
+    </div>
+    <h2>Saving data in the original storage</h2>
+    <div class="form-container">
+      <label for="firstName">Your Name:</label>
+      <input type="text" id="firstName" />
+
+      <label for="lastName">Your Lastname:</label>
+      <input type="text" id="lastName" />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" />
+      <div class="button_lockal">
+        <button id="saveButton">Save Data</button>
+      </div>
+    </div>
+
+    <script src="/JS/local_storage.js"></script>
+
+    <h2>Web Worker Timer</h2>
+    <p id="timer"></p>
+
+    <script>
+      const worker = new Worker("../JS/worker.js");
+      const timerElement = document.getElementById("timer");
+
+      worker.onmessage = function (event) {
+        const { minutes, seconds } = event.data;
+        timerElement.textContent = `Count result: ${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+      };
+    </script>
+    <footer>
+      <p class="footer">Mykhailo Serhiienko 2023</p>
+    </footer>
+  </body>
+</html>
